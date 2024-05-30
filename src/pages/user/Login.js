@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
   Container,
@@ -15,18 +15,12 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // const onSubmit = (data) => {
-  //   const { email, password } = data;
-  //   const user = login(email, password);
-    
-  //   if (!user) {
-  //     setError('email', {
-  //       message: 'Invalid email or password'
-  //     });
-  //   } else {
-  //     navigate('/home');
-  //   }
-  // };
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      navigate('/home');
+    }
+  }, []); 
 
   const onSubmit = (data) => {
     const { email, password } = data;
@@ -88,6 +82,12 @@ const Login = () => {
             helperText={errors.password ? errors.password.message : ''}
             autoComplete="current-password"
           />
+           <Typography align="left">
+            <Link to="/change-pass" style={{ textDecoration: 'none', color: 'inherit' }}>
+              {"Forgot Password?"}
+            </Link>
+          </Typography>
+
           <Button
             type="submit"
             fullWidth
@@ -97,6 +97,11 @@ const Login = () => {
           >
             Log In
           </Button>
+          <Typography align="center">
+            <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit' }}>
+              {"Don't have an account?"}
+            </Link>
+          </Typography>
         </form>
       </Box>
     </Container>

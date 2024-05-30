@@ -7,6 +7,7 @@ import Login from './pages/user/Login';
 import Home from './pages/task/Home'
 import Nav from './components/Nav';
 import ProtectedRoute from './components/ProtectedRoute';
+import ChangePassword from './pages/user/ChangePassword';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path='/home' element={< ProtectedRoute Component ={Home} />} />
+          <Route path='/change-pass' element={<ChangePassword/>} />
 
         </Routes>
       </Router>

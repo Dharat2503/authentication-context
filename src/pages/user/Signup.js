@@ -2,7 +2,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link } from 'react-router-dom';
 import {
   Container,
   TextField,
@@ -93,6 +93,11 @@ const Signup = () => {
           >
             Sign Up
           </Button>
+          <Typography align="center">
+            <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+              {"Alraedy have an account?"}
+            </Link>
+          </Typography>
         </form>
       </Box>
     </Container>
